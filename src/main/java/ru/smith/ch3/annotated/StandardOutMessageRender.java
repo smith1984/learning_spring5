@@ -1,4 +1,4 @@
-package ru.smith.ch3.annotation;
+package ru.smith.ch3.annotated;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

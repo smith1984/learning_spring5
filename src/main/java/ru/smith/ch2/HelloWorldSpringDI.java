@@ -8,7 +8,7 @@ import ru.smith.ch2.decoupled.MessageRender;
 
 public class HelloWorldSpringDI {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring/app-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring/ch2/app-context.xml");
         ApplicationContext context1 = new AnnotationConfigApplicationContext(HelloWorldConfiguration.class);
         MessageRender messageRender = context.getBean("render", MessageRender.class);
         messageRender.render();
