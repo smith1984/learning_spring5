@@ -1,4 +1,4 @@
-package ru.smith.ch3;
+package ru.smith.ch3.other;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

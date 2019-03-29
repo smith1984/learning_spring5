@@ -1,4 +1,4 @@
-package ru.smith.ch3;
+package ru.smith.ch3.other;
 
 public class ConstructorInjection {
     private Dependency dependency;

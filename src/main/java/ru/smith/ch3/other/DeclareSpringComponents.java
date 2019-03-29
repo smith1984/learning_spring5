@@ -1,4 +1,4 @@
-package ru.smith.ch3;
+package ru.smith.ch3.other;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 import ru.smith.ch2.decoupled.MessageProvider;

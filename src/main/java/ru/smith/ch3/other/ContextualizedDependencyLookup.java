@@ -1,4 +1,4 @@
-package ru.smith.ch3;
+package ru.smith.ch3.other;
 
 public class ContextualizedDependencyLookup implements ManegedComponent{
     private Dependency dependency;
