@@ -22,7 +22,7 @@ public class ConstructorConfusion {
 
     public static void main(String[] args) {
         GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-        context.load("classpath:spring/app-context-xml_ch3.xml");
+        context.load("classpath:spring/ch3/app-context-xml_ch3.xml");
         context.refresh();
         ConstructorConfusion confusion = (ConstructorConfusion) context.getBean("constructorConfusion");
         System.out.println(confusion);
