@@ -69,4 +69,12 @@
             </list>
         </property>
     </bean>
+    <bean id="singer" class="ru.smith.ch3.other.Singer" scope="prototype">
+    </bean>
+    <bean id="abstractLookupDemoBean" class="ru.smith.ch3.other.AbstractLookupDemoBean">
+        <lookup-method name="getMySinger" bean="singer"/>
+    </bean>
+    <bean id="standardLookupDemoBean" class="ru.smith.ch3.other.StandardLookupDemoBean">
+        <property name="mySinger" ref="singer"/>
+    </bean>
 </beans>
