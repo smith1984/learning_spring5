@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="provider" class="ru.smith.ch03.annotated.provider.HelloWorldMessageProvider"/>
+    <!-- <bean id="renderer" class="ru.smith.ch03.annotation.StandardOutMessageRender" p:messageProvider-ref="provider"/> -->
+    <bean id="renderer" class="ru.smith.ch03.annotated.StandardOutMessageRender">
+        <property name="messageProvider" ref="messageProvider"/>
+    </bean>
+    <bean id="messageProvider" class="ru.smith.ch03.xml.provider.ConfigurableMessageProvider">
+        <constructor-arg value="I hope that someone gets my message in a bottle"/>
+    </bean>
+    <bean id="constructorConfusion" class="ru.smith.ch03.xml.confusion.ConstructorConfusion">
+        <constructor-arg type="int">
+            <value>90</value>
+        </constructor-arg>
+    </bean>
+    <!--<bean id="injectSimple" class="ru.smith.ch03.xmlconfig.InjectSimple"/>-->
+    <bean id="injectSimple" class="ru.smith.ch03.xml.simple.InjectSimple"
+          p:name="Petrov Maksim"
+          p:age="35"
+          p:height="1.92"
+          p:programmer="false"
+          p:ageInSeconds="1241401112">
+    </bean>
+
+    <bean id="injectSimpleConfig" class="ru.smith.ch03.xml.simple.InjectSimpleConfig">
+    </bean>
+
+    <bean id="injectSimpleSpel" class="ru.smith.ch03.xml.simple.InjectSimpleSpel"
+          p:name="#{injectSimpleConfig.name}"
+          p:age="#{injectSimpleConfig.age + 1}"
+          p:height="#{injectSimpleConfig.height}"
+          p:programmer="#{injectSimpleConfig.programmer}"
+          p:ageInSeconds="#{injectSimpleConfig.ageInSeconds}">
+    </bean>
+    <bean id="oracle" name="wiseworm" class="ru.smith.ch03.xml.oracle.BookwormOracle"/>
+    <bean id="injectRef" class="ru.smith.ch03.xml.oracle.InjectRef">
+        <property name="oracle">
+            <ref bean="oracle"/>
+        </property>
+    </bean>
+    <bean id="lyricHolder" class="ru.smith.ch03.xml.collections.LyricHolder">
+    </bean>
+
+    <bean id="injectCollection" class="ru.smith.ch03.xml.collections.CollectionInjection">
+
+        <property name="map">
+            <map>
+                <entry key="someValue" value="It's a Friday, we finally made it"/>
+                <entry key="someBean" value-ref="lyricHolder"/>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="firstName">Maksim</prop>
+                <prop key="secondName">Petrov</prop>
+            </props>
+        </property>
+        <property name="set">
+            <set>
+                <value>I can't believe I get to see your face</value>
+                <ref bean="lyricHolder"/>
+            </set>
+        </property>
+        <property name="list">
+            <list>
+                <value>You've been working and I've been waiting</value>
+                <ref bean="lyricHolder"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="singer" class="ru.smith.ch03.xml.lookup.Singer" scope="prototype">
+    </bean>
+    <bean id="abstractLookupDemoBean" class="ru.smith.ch03.xml.lookup.AbstractLookupDemoBean">
+        <lookup-method name="getMySinger" bean="singer"/>
+    </bean>
+    <bean id="standardLookupDemoBean" class="ru.smith.ch03.xml.lookup.StandardLookupDemoBean">
+        <property name="mySinger" ref="singer"/>
+    </bean>
+    <bean id="methodReplacer" class="ru.smith.ch03.xml.replace_method.FormatMessageReplacer"/>
+    <bean id="replacementTarget" class="ru.smith.ch03.xml.replace_method.ReplacementTarget">
+        <replaced-method name="formatMessage" replacer="methodReplacer">
+            <arg-type>String</arg-type>
+        </replaced-method>
+    </bean>
+    <bean id="standardTarget" class="ru.smith.ch03.xml.replace_method.ReplacementTarget"/>
+</beans>
