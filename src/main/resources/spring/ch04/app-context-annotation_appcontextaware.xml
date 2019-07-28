@@ -8,5 +8,6 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd" >
 <context:annotation-config/>
-    <bean id="destructiveBean" class="ru.smith.ch04.annotated.destroyjsr250.DestructiveBeanWithJSR250" p:filePath="test.txt"/>
+    <bean id="destructiveBean" class="ru.smith.ch04.annotated.shutdownhookbean.DestructiveBeanWithInterface" p:filePath="test.txt"/>
+    <bean id="shutDownHook" class="ru.smith.ch04.annotated.shutdownhookbean.ShutdownHookBean"/>
 </beans>
