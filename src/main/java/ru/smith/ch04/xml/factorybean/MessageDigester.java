@@ -1,6 +1,7 @@
 package ru.smith.ch04.xml.factorybean;
 
 import lombok.Setter;
+import org.apache.commons.codec.binary.Hex;
 
 import java.security.MessageDigest;
 
@@ -25,6 +26,6 @@ public class MessageDigester {
         digest.reset();
         byte[] bytes = msg.getBytes();
         byte[] out = digest.digest(bytes);
-        System.out.println(out);
+        System.out.println((Hex.encodeHexString(out)).toUpperCase());
     }
 }
