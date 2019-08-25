@@ -7,6 +7,11 @@ import ru.smith.ch02.decoupled.MessageRender;
 @Service("renderer")
 public class StandardOutMessageRender implements MessageRender {
     private MessageProvider messageProvider;
+
+    public StandardOutMessageRender() {
+        System.out.println("--> StandardOutMessageRender: constructor called");
+    }
+
     @Override
     public void render() {
         if (messageProvider == null)
@@ -16,8 +21,9 @@ public class StandardOutMessageRender implements MessageRender {
     }
 
     @Override
-    @Autowired
+    //@Autowired
     public void setMessageProvider(MessageProvider provider) {
+        System.out.println("--> StandardOutMessageRender: setting the provider");
         this.messageProvider = provider;
     }
 

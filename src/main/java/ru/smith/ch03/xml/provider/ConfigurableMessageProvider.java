@@ -9,6 +9,10 @@ public class ConfigurableMessageProvider implements MessageProvider {
         this.message = message;
     }
 
+    public ConfigurableMessageProvider() {
+        message = "default message";
+    }
+
     @Override
     public String getMessage() {
         return message;
